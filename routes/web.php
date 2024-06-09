@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ClienteController;
+use App\Http\Controllers\Admin\FotoClassController;
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\CategoriaClassificadosController;
 use App\Http\Controllers\CategoriaController;
@@ -93,7 +94,7 @@ Route::middleware('auth')->group(function () {
     //classificados
     Route::get('/admin/classificados', [ClassificadoController::class, 'index'])->name('admin.pages.classificados.index');
 
-    //categorias classificados
+    //categorias classificados admin
     Route::get('/admin/classificados/categorias', [CategoriaClassificadosController::class, 'index'])->name('admin.pages.classificados.categoria.index');
     Route::post('/admin/classificados/categorias/store', [CategoriaClassificadosController::class, 'store'])->name('admin.pages.classificados.categoria.store');
     Route::delete('/admin/classificados/destroy/{id}', [CategoriaClassificadosController::class, 'destroy'])->name('admin.pages.classificados.categoria.destroy');
@@ -102,6 +103,12 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/cliente', [ClienteController::class, 'index'])->name('admin.pages.cliente.index');
     Route::get('admin/cliente/create', [ClienteController::class, 'create'])->name('admin.pages.cliente.create');
     Route::post('admin/cliente/store', [ClienteController::class, 'store'])->name('admin.pages.classificado.store');
+
+    //fotos classificados cliente
+    Route::get('admin/classificado/fotos', [FotoClassController::class, 'index'])->name('admin.pages.foto.index');
+
+
 });
+
 
 require __DIR__ . '/auth.php';
