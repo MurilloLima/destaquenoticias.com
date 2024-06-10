@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\CategoriaClassificadosController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Classificado extends Model
 {
     use HasFactory;
 
-    // public function categoria()
-    // {
-    //     return $this->belongsTo(CategoriaClassificados::class, 'cat_id');
-    // }
-
     public function categoria()
     {
-        return $this->hasOne(CategoriaClassificados::class, 'id', 'cat_id');
+        return $this->belongsTo(CategoriaClassificados::class, 'cat_id');
+    }
+
+
+    public function fotos()
+    {
+        return $this->hasMany(CategoriaClassificadosController::class, 'cat_id');
     }
 
 }

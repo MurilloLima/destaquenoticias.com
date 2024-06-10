@@ -12,6 +12,6 @@ class CategoriaClassificados extends Model
  
     public function classificado()
     {
-        return $this->belongsTo(Classificado::class, 'cat_id');
+        return $this->hasMany(Classificado::class, 'cat_id');
     } 
 }
