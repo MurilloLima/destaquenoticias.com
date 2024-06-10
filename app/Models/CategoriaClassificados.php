@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CategoriaClassificados extends Model
 {
     use HasFactory;
- 
+
     public function classificado()
     {
-        return $this->hasMany(Classificado::class, 'cat_id');
-    } 
+        return $this->hasMany(Classificado::class);
+    }
 }

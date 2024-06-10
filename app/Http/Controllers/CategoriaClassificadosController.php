@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoriaClassificados;
+use App\Models\Classificado;
+use App\Models\Denuncia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoriaClassificadosController extends Controller
 {
-    private $cat_classific;
-    public function __construct(CategoriaClassificados $cat_classific)
-    {
-        $this->cat_classific = $cat_classific;
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cat = CategoriaClassificados::latest()->get();
-        return view('admin.pages.classificados.categorias.index', compact('cat'));
+        // $cat = CategoriaClassificados::latest()->get();
+        dd($this->catclassificados->all());
+        // return view('admin.pages.classificados.categorias.index', compact('cat'));
     }
 
     /**
@@ -39,9 +37,9 @@ class CategoriaClassificadosController extends Controller
             'title' => 'required',
         ]);
 
-        $this->cat_classific->title = $request->title;
-        $this->cat_classific->slug = Str::slug($request->title, '-');
-        $this->cat_classific->save();
+        $this->Classificadis()->title = $request->title;
+        $this->Classificadis()->slug = Str::slug($request->title, '-');
+        $this->Classificadis()->save();
         return redirect()->back()->with('msg', 'Cadastrado com sucesso!');
     }
 
@@ -74,7 +72,7 @@ class CategoriaClassificadosController extends Controller
      */
     public function destroy($id)
     {
-        $this->cat_classific->destroy($id);
+        $this->Classificadis()->destroy($id);
         return redirect()->back()->with('msg', 'Deletada com sucesso!');
     }
 }

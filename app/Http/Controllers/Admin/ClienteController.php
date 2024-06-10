@@ -6,15 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use App\Models\CategoriaClassificados;
 use App\Models\Classificado;
+use App\Models\Denuncia;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    private $classificado;
-    public function __construct(Classificado $classificado)
-    {
-        $this->classificado = $classificado;
-    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -48,12 +45,12 @@ class ClienteController extends Controller
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('upload/classificados'), $imageName);
-            $this->classificado->img = $imageName;
-            $this->classificado->cat_id = $request->cat_id;
-            $this->classificado->title = $request->title;
-            $this->classificado->desc = $request->desc;
-            $this->classificado->valor = $request->valor;
-            $this->classificado->save();
+            $this->Classificado()->img = $imageName;
+            $this->Classificado()->cat_id = $request->cat_id;
+            $this->Classificado()->title = $request->title;
+            $this->Classificado()->desc = $request->desc;
+            $this->Classificado()->valor = $request->valor;
+            $this->Classificado()->save();
             return redirect()->back()->with('msg', 'Cadastrado com sucesso!');
         }
     }

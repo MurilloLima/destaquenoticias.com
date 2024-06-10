@@ -18,7 +18,6 @@ class Classificado extends Model
 
     public function fotos()
     {
-        return $this->hasMany(CategoriaClassificadosController::class, 'cat_id');
+        return $this->hasMany(CategoriaClassificados::class, 'id', 'cat_id');
     }
-
 }
