@@ -72,7 +72,7 @@
                                                     <a href="{{ route('admin.pages.foto.index', $item->id) }}"
                                                         class="btn btn-outline-primary btn-block btn-sm">
                                                         Enviar+
-                                                        <span class="badge bg-warning">{{ $item->fotos->count() }}</span>
+                                                        <span class="badge bg-warning">{{ $item->fotos()->count() }}</span>
                                                     </a>
                                                 </td>
 

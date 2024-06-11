@@ -18,7 +18,7 @@ class ImageController extends Controller
      */
     public function index($id)
     {
-        $data = Image::where('user_id', '=', $id)->get();
+        $data = Image::where('cat_id', '=', $id)->latest()->get();
         return view('admin.pages.classificados.fotos.index', compact('id', 'data'));
     }
 

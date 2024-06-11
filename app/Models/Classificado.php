@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\CategoriaClassificadosController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +17,6 @@ class Classificado extends Model
 
     public function fotos()
     {
-        return $this->hasMany(CategoriaClassificados::class, 'id', 'cat_id');
+        return $this->belongsTo(Image::class, 'id', 'cat_id');
     }
 }

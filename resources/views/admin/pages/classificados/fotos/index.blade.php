@@ -57,9 +57,17 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 {{-- images --}}
-                                @foreach ($data as $item)
-                                    {{ $item->id }}
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($data as $item)
+                                        <div class="col-sm-2">
+                                            <a href="" data-toggle="lightbox" data-title="sample 1 - white"
+                                                data-gallery="gallery">
+                                                <img src="{{ asset('upload/classificados/' . $item->img) }}"
+                                                    class="img-fluid mb-2" alt="white sample">
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
 
                             </div>
                             <!-- /.card-body -->
