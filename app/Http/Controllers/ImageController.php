@@ -1,29 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Categoria;
-use App\Models\CategoriaClassificados;
 use App\Models\Classificado;
-use App\Models\Denuncia;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class ImageController extends Controller
 {
-    private $class;
-    public function __construct(Classificado $class)
+    private $img;
+    public function __construct(Image $img)
     {
-        $this->class = $class;
+        $this->img = $img;
     }
-    
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $data = Classificado::latest()->get();
-        return view('admin.pages.cliente.index', compact('data'));
+        $data = Image::where('user_id', '=', $id)->get();
+        return view('admin.pages.classificados.fotos.index', compact('id', 'data'));
     }
 
     /**
@@ -31,8 +27,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $cat = CategoriaClassificados::latest()->get();
-        return view('admin.pages.cliente.create', compact('cat'));
+        //
     }
 
     /**
@@ -42,20 +37,16 @@ class ClienteController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'title' => 'required',
-            'desc' => 'required',
-            'valor' => 'required',
         ]);
+
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('upload/classificados'), $imageName);
-            $this->class->img = $imageName;
-            $this->class->cat_id = $request->cat_id;
-            $this->class->title = $request->title;
-            $this->class->desc = $request->desc;
-            $this->class->valor = $request->valor;
-            $this->class->save();
+            $this->img->img = $imageName;
+            $this->img->cat_id = $request->cat_id;
+            $this->img->user_id = auth()->user()->id;
+            $this->img->save();
             return redirect()->back()->with('msg', 'Cadastrado com sucesso!');
         }
     }
@@ -63,7 +54,7 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Image $image)
     {
         //
     }
@@ -71,7 +62,7 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Image $image)
     {
         //
     }
@@ -79,7 +70,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Image $image)
     {
         //
     }
@@ -87,7 +78,7 @@ class ClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Image $image)
     {
         //
     }

@@ -178,7 +178,7 @@
                     <a href="{{ route('admin.pages.cliente.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
-                            Divulgar
+                            Minhas divulgações
                         </p>
                     </a>
                 </li>

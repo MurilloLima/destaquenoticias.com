@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Models\Dencia;
 use App\Models\Denuncia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class DenunciaController extends Controller
 {
