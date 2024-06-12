@@ -9,6 +9,11 @@ use App\Models\CategoriaClassificados;
 
 class ClassificadoController extends Controller
 {
+    private $class;
+    public function __construct(Classificado $class)
+    {
+        $this->class = $class;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -63,8 +68,10 @@ class ClassificadoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Classificado $classificado)
+    public function destroy($id)
     {
-        //
+        $classe = Classificado::find($id);
+        $classe->delete();
+        return redirect()->back()->with('msg', 'Deletado com sucesso!');
     }
 }

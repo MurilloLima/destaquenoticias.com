@@ -100,9 +100,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/classificados/destroy/{id}', [CategoriaClassificadosController::class, 'destroy'])->name('admin.pages.classificados.categoria.destroy');
 
     //classificados
-    Route::get('admin/cliente', [ClienteController::class, 'index'])->name('admin.pages.cliente.index');
-    Route::get('admin/cliente/create', [ClienteController::class, 'create'])->name('admin.pages.cliente.create');
-    Route::post('admin/cliente/store', [ClienteController::class, 'store'])->name('admin.pages.classificado.store');
+    Route::get('admin/classificado', [ClassificadoController::class, 'index'])->name('admin.pages.classificado.index');
+    Route::get('admin/classificado/create', [ClassificadoController::class, 'create'])->name('admin.pages.classificado.create');
+    Route::post('admin/classificado/store', [ClassificadoController::class, 'store'])->name('admin.pages.classificado.store');
+    Route::delete('admin/classificado/destroy{id}', [ClassificadoController::class, 'destroy'])->name('admin.pages.classificado.destroy');
 
     //classificados imagens 
     Route::get('admin/classificado/fotos/{id}', [ImageController::class, 'index'])->name('admin.pages.foto.index');

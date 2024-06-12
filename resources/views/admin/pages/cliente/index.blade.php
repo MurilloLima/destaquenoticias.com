@@ -82,10 +82,16 @@
                                                         title="Editar">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.pages.noticias.destroy', [$item->id]) }}"
-                                                        title="Excluir">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                    <form onsubmit="return confirm('Deseja excluir?');"
+                                                        action="{{ route('admin.pages.classificado.destroy', $item->id) }}"
+                                                        method="POST" style="float: right;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Deletar"
+                                                            class="btn btn-danger btn-sm">
+                                                            <ion-icon name="trash-outline"></ion-icon>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

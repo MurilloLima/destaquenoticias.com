@@ -66,25 +66,40 @@
                                         <tr>
                                             <th>Título</th>
                                             <th>Categoria</th>
-                                            <th>Valor</th>
-                                            <th style="width: 70px">#</th>
+                                            <th style="width: 130px">Imagens</th>
+                                            <th>Categoria</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data as $item)
                                             <tr>
                                                 <td>{{ $item->title }}</td>
-                                                <td>{{ $item->categoria->title }}</td>
                                                 <td>{{ $item->valor }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.pages.foto.index', $item->id) }}"
+                                                        class="btn btn-outline-primary btn-block btn-sm">
+                                                        Enviar+
+                                                        <span class="badge bg-warning">{{ $item->fotos()->count() }}</span>
+                                                    </a>
+                                                </td>
+
+                                                <td>{{ $item->categoria->title }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.pages.noticias.edit', [$item->id]) }}"
                                                         title="Editar">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.pages.noticias.destroy', [$item->id]) }}"
-                                                        title="Excluir">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                    <form onsubmit="return confirm('Deseja excluir?');"
+                                                        action="{{ route('admin.pages.classificado.destroy', [$item->id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            style="height: 26px">
+                                                            Excluir
+                                                            <ion-icon name="trash-outline"></ion-icon>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

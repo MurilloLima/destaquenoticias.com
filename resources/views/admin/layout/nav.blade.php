@@ -175,7 +175,7 @@
                 data-accordion="false">
                 @if (auth()->user()->role == 2)
                 <li class="nav-item">
-                    <a href="{{ route('admin.pages.cliente.index') }}" class="nav-link">
+                    <a href="{{ route('admin.pages.classificado.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
                             Minhas divulgações

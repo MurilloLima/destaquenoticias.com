@@ -63,11 +63,14 @@
                                                     <p>{{ $item->name }}</p>
                                                 </td>
                                                 <td style="width: 80px;">
-                                                    <a href="{{ route('admin.pages.categorias.edit', [$item->id]) }}" title="Editar">
+                                                    <a href="{{ route('admin.pages.categorias.edit', [$item->id]) }}"
+                                                        title="Editar">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.pages.categoria.destroy', [$item->id]) }}" title="Excluir">
-                                                        <i class="fas fa-trash"></i>                                                    </a>
+                                                    <a href="{{ route('admin.pages.categoria.destroy', [$item->id]) }}"
+                                                        title="Excluir">
+                                                        <i class="fas fa-trash"></i> 
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
