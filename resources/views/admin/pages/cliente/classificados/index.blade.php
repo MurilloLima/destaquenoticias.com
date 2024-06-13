@@ -22,6 +22,9 @@
                         <a href="{{ route('admin.pages.cliente.classificado.create') }}" class="btn btn-primary">
                             Cadastrar
                         </a>
+                        <a href="{{ route('admin.pages.classificados.categoria.index') }}" class="btn btn-danger">
+                            Categorias
+                        </a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
