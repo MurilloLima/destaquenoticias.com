@@ -19,15 +19,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('admin.pages.cliente.classificado.create') }}" class="btn btn-primary">
-                            Cadastrar
-                        </a>
                         @if (Auth()->user()->role == 1)
-                        <a href="{{ route('admin.pages.classificados.categoria.index') }}" class="btn btn-danger">
-                            Categorias
-                        </a>
+                            <a href="{{ route('admin.pages.classificados.categoria.index') }}" class="btn btn-danger">
+                                Categorias
+                            </a>
+                        @else
+                            <a href="{{ route('admin.pages.cliente.classificado.create') }}" class="btn btn-primary">
+                                Cadastrar
+                            </a>
                         @endif
-                        
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -71,7 +71,7 @@
                                     <thead>
                                         <tr>
                                             <th>Título</th>
-                                            <th>Categoria</th>
+                                            <th>Valor</th>
                                             <th style="width: 130px">Imagens</th>
                                             <th style="width: 150px">Categoria</th>
                                             <th style="width: 40px">#</th>
@@ -97,8 +97,7 @@
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm"
-                                                            style="height: 26px">
+                                                        <button type="submit" class="btn btn-sm" style="height: 26px">
                                                             <i class="far fa-trash-alt"></i>
                                                             <ion-icon name="far fa-trash-alt"></ion-icon>
                                                         </button>
