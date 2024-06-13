@@ -35,7 +35,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    Categorias
+                                    Categorias classificados
                                 </h3>
                             </div>
                             <!-- /.card-header -->
@@ -73,7 +73,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" title="Deletar"
-                                                            class="btn btn-danger btn-sm">
+                                                            class="btn btn-sm">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>

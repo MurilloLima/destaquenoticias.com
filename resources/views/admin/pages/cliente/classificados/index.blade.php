@@ -22,9 +22,12 @@
                         <a href="{{ route('admin.pages.cliente.classificado.create') }}" class="btn btn-primary">
                             Cadastrar
                         </a>
+                        @if (Auth()->user()->role == 1)
                         <a href="{{ route('admin.pages.classificados.categoria.index') }}" class="btn btn-danger">
                             Categorias
                         </a>
+                        @endif
+                        
                     </div>
                 </div>
             </div><!-- /.container-fluid -->

@@ -98,14 +98,14 @@ Route::middleware('auth')->group(function () {
 
     //categorias classificados admin
     Route::get('/admin/classificados/categorias', [CategoriaClassificadosController::class, 'index'])->name('admin.pages.classificados.categoria.index');
-    Route::post('/admin/classificados/categorias/store', [Categoriaclass::class, 'store'])->name('admin.pages.classificados.categoria.store');
-    Route::delete('/admin/classificados/destroy/{id}', [Categoriaclass::class, 'destroy'])->name('admin.pages.classificados.categoria.destroy');
+    Route::post('/admin/classificados/categorias/store', [CategoriaClassificadosController::class, 'store'])->name('admin.pages.classificados.categoria.store');
+    Route::delete('/admin/classificados/destroy/{id}', [CategoriaClassificadosController::class, 'destroy'])->name('admin.pages.classificados.categoria.destroy');
 
     //classificados cliente
-    Route::get('admin/classificado', [CategoriaClassificadosController::class, 'index'])->name('admin.pages.cliente.classificado.index');
-    Route::get('admin/classificado/create', [CategoriaClassificadosController::class, 'create'])->name('admin.pages.cliente.classificado.create');
-    Route::post('admin/classificado/store', [CategoriaClassificadosController::class, 'store'])->name('admin.pages.classificado.store');
-    Route::delete('admin/classificado/destroy{id}', [CategoriaClassificadosController::class, 'destroy'])->name('admin.pages.classificado.destroy');
+    Route::get('admin/classificado', [ClassificadoController::class, 'index'])->name('admin.pages.cliente.classificado.index');
+    Route::get('admin/classificado/create', [ClassificadoController::class, 'create'])->name('admin.pages.cliente.classificado.create');
+    Route::post('admin/classificado/store', [ClassificadoController::class, 'store'])->name('admin.pages.classificado.store');
+    Route::delete('admin/classificado/destroy{id}', [ClassificadoController::class, 'destroy'])->name('admin.pages.classificado.destroy');
 
     //classificados imagens cliente
     Route::get('admin/classificado/fotos/{id}', [ImageController::class, 'index'])->name('admin.pages.foto.create');

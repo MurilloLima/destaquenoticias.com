@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoriaclass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriaClassificadosController extends Controller
 {
+    private $categoria;
+    public function __construct(Categoriaclass $categoria)
+    {
+        $this->categoria = $categoria;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +35,14 @@ class CategoriaClassificadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+        $noticia = $this->categoria->find($request->id);
+        $this->categoria->title = $request->get('title');
+        $this->categoria->slug = Str::slug($request->name, '-');
+        $this->categoria->save();
+        return redirect()->back()->with('msg', 'Cadastrado com sucesso!');
     }
 
     /**
@@ -59,8 +72,9 @@ class CategoriaClassificadosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Categoriaclass::destroy($id);
+        return redirect()->back()->with('msg', 'Deletada com sucesso!');
     }
 }
