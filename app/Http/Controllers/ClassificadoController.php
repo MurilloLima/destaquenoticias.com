@@ -45,7 +45,7 @@ class ClassificadoController extends Controller
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('upload/noticias'), $imageName);
+            $request->image->move(public_path('upload/classificados'), $imageName);
             $this->class->cat_id = $request->cat_id;
             $this->class->title = $request->title;
             $this->class->desc = $request->desc;
@@ -61,7 +61,7 @@ class ClassificadoController extends Controller
      */
     public function show($id)
     {
-        $cat = categorie::latest()->get();
+        $cat = Categoriaclass::latest()->get();
         $data = Classificado::where('cat_id', '=', $id)->get();
         return view('home.pages.classificados.view', compact('cat', 'data'));
     }

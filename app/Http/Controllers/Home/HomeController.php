@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\CategoriaClassificadosController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Categoria;
+use App\Models\Categoriaclass;
 use App\Models\CategoriaClassificados;
 use App\Models\Classificado;
 use App\Models\Depoimento;
@@ -113,7 +115,7 @@ class HomeController extends Controller
     {
         // menu categorias
         $cat = Categoria::latest()->get();
-        $catclass = CategoriaClassificados::latest()->get();
+        $catclass = Categoriaclass::latest()->get();
         // news top
 
         //noticia principal
