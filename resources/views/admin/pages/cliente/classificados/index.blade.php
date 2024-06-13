@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title', 'Divulgar')
+@section('title', 'Classificados')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -8,16 +8,22 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <a href="{{ route('admin.pages.cliente.create') }}" class="btn btn-primary">Cadastrar</a>
+                        {{-- <h1>Notícias</h1> --}}
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Divulgar</li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard', ['id' => 1]) }}">Home</a></li>
+                            <li class="breadcrumb-item active">Classificados</li>
                         </ol>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ route('admin.pages.cliente.classificado.create') }}" class="btn btn-primary">
+                            Cadastrar
+                        </a>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
 
@@ -27,7 +33,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-
+                            <div class="card-header">
+                                <h3 class="card-title">Divulgações</h3>
+                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
@@ -57,10 +65,10 @@
                                     <thead>
                                         <tr>
                                             <th>Título</th>
-                                            <th>Valor</th>
-                                            <th style="text-align: center; width: 150px;">Fotos</th>
                                             <th>Categoria</th>
-                                            <th style="width: 70px">#</th>
+                                            <th style="width: 130px">Imagens</th>
+                                            <th style="width: 150px">Categoria</th>
+                                            <th style="width: 40px">#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,27 +77,24 @@
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->valor }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.pages.foto.index', $item->id) }}"
+                                                    <a href="{{ route('admin.pages.foto.create', $item->id) }}"
                                                         class="btn btn-outline-primary btn-block btn-sm">
                                                         Enviar+
-                                                        <span class="badge bg-warning">{{ $item->fotos()->count() }}</span>
+                                                        <span class="badge bg-warning">{{ $item->images()->count() }}</span>
                                                     </a>
                                                 </td>
 
                                                 <td>{{ $item->categoria->title }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.pages.noticias.edit', [$item->id]) }}"
-                                                        title="Editar">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
                                                     <form onsubmit="return confirm('Deseja excluir?');"
-                                                        action="{{ route('admin.pages.classificado.destroy', $item->id) }}"
-                                                        method="POST" style="float: right;">
+                                                        action="{{ route('admin.pages.classificado.destroy', [$item->id]) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" title="Deletar"
-                                                            class="btn btn-danger btn-sm">
-                                                            <ion-icon name="trash-outline"></ion-icon>
+                                                        <button type="submit" class="btn btn-sm"
+                                                            style="height: 26px">
+                                                            <i class="far fa-trash-alt"></i>
+                                                            <ion-icon name="far fa-trash-alt"></ion-icon>
                                                         </button>
                                                     </form>
                                                 </td>
@@ -99,7 +104,15 @@
                                 </table>
                             </div>
                             <!-- /.card-body -->
-
+                            {{-- <div class="card-footer clearfix">
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                </ul>
+                            </div> --}}
                         </div>
                         <!-- /.card -->
 

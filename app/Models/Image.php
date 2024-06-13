@@ -14,4 +14,9 @@ class Image extends Model
         'user_id',
         'cat_id',
     ];
+
+    public function categoria()
+    {
+        return $this->belongsTo(CategoriaClassif::class, 'cat_id');
+    }
 }

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriaClassificados extends Model
+class Categoriaclass extends Model
 {
     use HasFactory;
 
-    public function classificado()
+    protected $primaryKey = 'id';
+
+    public function images()
     {
-        return $this->hasMany(Classificado::class);
+        return $this->hasMany(Image::class, 'id', 'cat_id');
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cat_id')->constrained('classificados'); //id do tipo categoria
-            $table->foreignId('user_id')->constrained('users'); //id do tipo categoria
+            $table->foreignId('cat_id')->references('id')->on('classificados')->onDelete('cascade');
             $table->string('img');
             $table->timestamps();
         });
+        
     }
 
     /**

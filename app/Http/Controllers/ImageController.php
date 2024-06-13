@@ -19,7 +19,7 @@ class ImageController extends Controller
     public function index($id)
     {
         $data = Image::where('cat_id', '=', $id)->latest()->get();
-        return view('admin.pages.classificados.fotos.index', compact('id', 'data'));
+        return view('admin.pages.cliente.classificados.fotos.index', compact('id', 'data'));
     }
 
     /**
@@ -45,7 +45,6 @@ class ImageController extends Controller
             $request->image->move(public_path('upload/classificados'), $imageName);
             $this->img->img = $imageName;
             $this->img->cat_id = $request->cat_id;
-            $this->img->user_id = auth()->user()->id;
             $this->img->save();
             return redirect()->back()->with('msg', 'Cadastrado com sucesso!');
         }

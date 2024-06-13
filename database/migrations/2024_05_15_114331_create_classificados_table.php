@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('classificados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cat_id');
-            $table->string('img');
+            $table->foreignId('cat_id')->on('categories');
+            $table->string('image');
             $table->string('title');
             $table->string('desc');
             $table->string('valor');
