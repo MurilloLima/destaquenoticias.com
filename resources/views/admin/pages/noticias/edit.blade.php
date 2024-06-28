@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="customFile">Conteúdo</label>
-                                            <textarea name="content" id="myeditorinstance">
+                                            <textarea name="content" id="mytextarea">
                                                 {{ $noticia->content }}
                                             </textarea>
                                         </div>
