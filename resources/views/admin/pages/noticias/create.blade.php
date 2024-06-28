@@ -77,11 +77,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="customFile">Conteúdo</label>
-                                            <textarea id="editor" name="content"></textarea>
+                                            <textarea name="content" id="mytextarea"></textarea>
                                         </div>
-
-
-
 
                                     </div>
                                     <div class="modal-footer justify-content-between">
