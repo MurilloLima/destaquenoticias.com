@@ -72,7 +72,7 @@ class HomeController extends Controller
     {
         $data = Noticia::where('slug', '=', $slug)->first();
         $cat = Categoria::orderBy('created_at', 'desc')->get();
-        $aletoria = Noticia::orderby('id', 'DESC')->limit(5)->get();
+        $aletoria = Noticia::inRandomOrder()->limit(5)->get();
         $outras = Noticia::offset(5)->limit(2)->get();
         return view('home.pages.noticias.view', compact('data', 'cat', 'outras', 'aletoria'));
     }
