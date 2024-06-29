@@ -9,9 +9,22 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger text-center" style="margin: 10px;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li style="text-align: center">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @if (session('msg'))
-                            <div class="alert alert-success text-center">
-                                {{ session('msg') }}
+                            <div class="row text-center">
+                                <div class="col-md-12" \>
+                                    <div class="alert alert-success text-center" style="color: white; margin: 10px;">
+                                        {{ session('msg') }}
+                                    </div>
+                                </div>
                             </div>
                         @endif
                     </div>
