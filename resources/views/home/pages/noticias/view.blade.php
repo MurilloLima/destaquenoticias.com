@@ -91,25 +91,18 @@
                             <h4 class="mb-4">+Notícias</h4>
                             {{-- noticias lado direto --}}
                             @foreach ($aletoria as $item)
-                                <div class="d-flex align-items-center justify-content-start">
-                                    {{-- <div class="rounded" style="width: 100px; height: 100px;">
-                                        <a href="{{ route('home.pages.view', [$item->slug]) }}">
+                                <a href="{{ route('home.pages.view', [$item->slug]) }}">
+                                    <div class="d-flex align-items-center justify-content-start"
+                                        style="margin-bottom: 10px">
+                                        <div class="rounded me-4" style="width: 100px; height: 100px;">
                                             <img src="{{ asset('upload/noticias/' . $item->img) }}"
-                                                class="img-fluid rounded" alt="Image" style="padding: 3px">
-                                        </a>
-                                    </div> --}}
-                                    <div>
-                                        <a href="{{ route('home.pages.view', [$item->slug]) }}">
-                                            <h5 class="fw-bold me-2">{{ $item->title }}</h5>
-                                        </a>
-
-
-                                        <div class="d-flex mb-2">
-                                            {{-- <h6 class="mb-2">{{ $item->title }}</h6> --}}
-                                            {{-- <h5 class="text-danger text-decoration-line-through">{{ $item->desc }}</h5> --}}
+                                                class="img-fluid rounded" alt="">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-2">{{ $item->title }}</h6>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             @endforeach
 
                             {{-- <div class="d-flex justify-content-center my-4">
