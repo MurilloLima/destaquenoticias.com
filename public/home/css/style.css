@@ -539,4 +539,7 @@ svg {
     color: #ffb524;
 }
 
-
+.rounded img {
+    width: 100%;
+    height: auto;
+}

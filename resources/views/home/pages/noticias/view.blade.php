@@ -94,10 +94,10 @@
                                 <a href="{{ route('home.pages.view', [$item->slug]) }}">
                                     <div class="d-flex align-items-center justify-content-start"
                                         style="margin-bottom: 10px">
-                                        <div class="rounded me-4" style="width: 70px; height: 80px;">
+                                        {{-- <div class="rounded me-4" style="width: 100px; height: 100px;">
                                             <img src="{{ asset('upload/noticias/' . $item->img) }}"
-                                                class="img-fluid rounded" alt="">
-                                        </div>
+                                                class="img-fluid img-thumbnail" alt="">
+                                        </div> --}}
                                         <div>
                                             <h6 class="mb-2">{{ $item->title }}</h6>
                                         </div>
